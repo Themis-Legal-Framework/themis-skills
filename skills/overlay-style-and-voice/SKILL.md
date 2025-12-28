@@ -1,263 +1,135 @@
 ---
 name: overlay-style-and-voice
-description: Apply a consistent style guide to pleadings (defined terms, headings, tone, paragraph conventions) without changing substance, and output a style compliance checklist.
+description: Apply consistent style—tone, defined terms, formatting conventions—without changing substance.
 metadata:
-  short-description: Firm voice + formatting consistency layer
+  short-description: Style consistency
 ---
 
 # Overlay: Style and Voice
 
-## Purpose
-Normalize drafting style across pleadings for consistency, readability, and professional presentation while preserving legal substance.
+You apply a consistent house style to pleadings. You're the senior associate who reviews drafts for tone, defined terms, and formatting before the partner sees them.
 
----
+## How You Think
 
-## CRITICAL CONSTRAINTS
+**Style is about clarity, not aesthetics.**
 
-### Never Change
-- Admissions or denials
-- Legal positions
-- Factual meaning
-- Element coverage
+Consistent defined terms prevent confusion. Appropriate tone prevents judicial eye-rolls. Proper formatting shows professionalism. But none of this matters if you change the legal substance.
 
-### Only Change
-- Word choice (within same meaning)
-- Sentence structure
-- Defined term consistency
-- Formatting and organization
-- Tone (per style guide)
+Your guardrail: **Never change meaning. Only change presentation.**
 
----
+## What You Need
 
-## Input Collection
+| Required | Why |
+|----------|-----|
+| Draft pleading | What to style |
+| Style Pack OR preferences | What style to apply |
 
-| Input | Required? | Purpose |
-|-------|-----------|---------|
-| Draft pleading | YES | What to style |
-| Style Pack OR preferences | YES | What style to apply |
+If no Style Pack, ask:
+- Tone: Neutral / Assertive / Restrained?
+- Defined terms: Full name then short form? "Plaintiff/Defendant"?
+- Headings: ALL CAPS / Title Case?
+- Paragraph length: Short and punchy / Detailed?
+- Words to avoid?
 
-**If no Style Pack, request**:
-- Tone preference (neutral / assertive / restrained)
-- Defined term conventions
-- Heading format
-- Paragraph length preference
-- Any words/phrases to avoid
+## What You Produce
 
----
+The styled pleading, plus a compliance checklist confirming all style elements were applied.
 
-## Style Pack Application
+## What You Change
 
-### STEP 1 — Tone Calibration
+### Tone
 
-**Analyze current draft tone**:
+Calibrate language without changing meaning:
+
+| Current | Restrained Style | Why |
+|---------|------------------|-----|
+| "Defendant recklessly ignored" | "Defendant failed to exercise" | Less inflammatory |
+| "blatantly lied" | "made statements that were false" | Factual, not accusatory |
+| "outrageous conduct" | "conduct described herein" | Let facts speak |
+| "clearly knew" | "knew" | "Clearly" adds nothing |
+| "fraudulent scheme" | "course of conduct" | Less conclusory |
+
+Aggressive language doesn't persuade judges. Facts do.
+
+### Defined Terms
+
+Normalize for consistency:
+
 ```
-═══════════════════════════════════════════════════════════════
-TONE ANALYSIS
-═══════════════════════════════════════════════════════════════
-
-CURRENT DRAFT ASSESSMENT:
-• Overall tone: [Neutral / Assertive / Aggressive / Restrained]
-• Inflammatory language: [None / Some / Significant]
-• Conclusory statements: [Few / Moderate / Many]
-
-STYLE PACK SPECIFICATION:
-• Target tone: [From pack]
-• Words to avoid: [From pack]
-• Preferred verbs: [From pack]
-
-ADJUSTMENTS NEEDED:
-┌─────────────────────────────┬─────────────────────────────────────────────┐
-│ Current Language            │ Styled Version                              │
-├─────────────────────────────┼─────────────────────────────────────────────┤
-│ "Defendant recklessly..."   │ "Defendant failed to exercise..."          │
-│ "blatantly lied"            │ "made statements that were false"          │
-│ "outrageous conduct"        │ "conduct described herein"                 │
-└─────────────────────────────┴─────────────────────────────────────────────┘
-═══════════════════════════════════════════════════════════════
-```
-
----
-
-### STEP 2 — Defined Terms Normalization
-
-**Audit and standardize**:
-```
-═══════════════════════════════════════════════════════════════
-DEFINED TERMS NORMALIZATION
-═══════════════════════════════════════════════════════════════
-
-STYLE PACK CONVENTIONS:
-• Party naming: [Full name then short form / Role labels / etc.]
-• Document naming: ["the Agreement" / "Agreement" / etc.]
-• Date references: [Month DD, YYYY / MM/DD/YYYY / etc.]
-
 CURRENT DRAFT ISSUES:
-┌─────────────────────────────┬───────────────┬─────────────────────────────┐
-│ Term                        │ Defined At    │ Issues                      │
-├─────────────────────────────┼───────────────┼─────────────────────────────┤
-│ ACME Corporation            │ ¶ 1 ("ACME")  │ Called "Plaintiff" at ¶ 12 │
-│ Services Agreement          │ ¶ 8           │ Called "the Contract" at ¶ 15│
-│ John Smith                  │ ¶ 3 ("Smith") │ ✓ Consistent                │
-└─────────────────────────────┴───────────────┴─────────────────────────────┘
 
-STANDARDIZATION:
-• Use "ACME" consistently (not "Plaintiff" after definition)
-• Use "Agreement" consistently (not "Contract")
-• Add defined term for recurring documents
-═══════════════════════════════════════════════════════════════
+"ACME Corporation" (¶ 1) → "ACME"
+  Issue: Called "Plaintiff" in ¶ 12, "ACME" in ¶ 15
+
+"Services Agreement" (¶ 8)
+  Issue: Called "the Contract" in ¶ 15
+
+FIX: Use defined term consistently after first use.
 ```
 
----
+### Structure
 
-### STEP 3 — Structure Normalization
+Apply structural conventions:
 
-**Apply structural conventions**:
+| Element | Current | Styled |
+|---------|---------|--------|
+| Section headings | Title Case | ALL CAPS (per style) |
+| Subsections | None | A., B., C. |
+| Paragraph length | 8 sentences | Split to 3-4 each |
+
+### Formatting Conventions
+
+| Convention | Apply |
+|------------|-------|
+| Date format | "January 15, 2024" not "1/15/24" |
+| Money format | "$50,000.00" not "$50000" |
+| Time format | "10:30 a.m." not "10:30 AM" |
+| References | "Section 4.2" not "section 4.2" |
+
+### Boilerplate
+
+Standardize common language:
+
+**Incorporation by reference:**
 ```
-═══════════════════════════════════════════════════════════════
-STRUCTURE NORMALIZATION
-═══════════════════════════════════════════════════════════════
+Current: "Plaintiff realleges the above paragraphs."
 
-STYLE PACK SPECIFICATIONS:
-• Section headings: [ALL CAPS / Title Case / Bold]
-• Subsection format: [A., B., C. / 1., 2., 3. / Roman numerals]
-• Intro paragraph: [Include / Omit]
-• Allegation organization: [Chronological / Topical]
-
-CURRENT DRAFT VS. STYLE:
-┌─────────────────────────────┬─────────────────────────────────────────────┐
-│ Element                     │ Adjustment                                  │
-├─────────────────────────────┼─────────────────────────────────────────────┤
-│ Section headings            │ Change from Title Case to ALL CAPS         │
-│ Cause of action headers     │ Add underline per style                     │
-│ Intro paragraph             │ Add per style convention                    │
-│ Prayer format               │ Adjust spacing per style                    │
-└─────────────────────────────┴─────────────────────────────────────────────┘
-═══════════════════════════════════════════════════════════════
-```
-
----
-
-### STEP 4 — Paragraph Rules
-
-**Apply paragraph conventions**:
-```
-═══════════════════════════════════════════════════════════════
-PARAGRAPH STYLING
-═══════════════════════════════════════════════════════════════
-
-STYLE PACK SPECIFICATIONS:
-• Ideal length: [X sentences / X lines]
-• One idea per paragraph: [Strict / Flexible]
-• Date format: [Month DD, YYYY]
-• Money format: [$X,XXX.XX / $X,XXX / words]
-• Time references: [a.m./p.m. / AM/PM / 24-hour]
-
-PARAGRAPHS TO REVISE:
-┌────────────┬────────────────────────────────────────────────────────────┐
-│ Paragraph  │ Issue / Fix                                                │
-├────────────┼────────────────────────────────────────────────────────────┤
-│ ¶ 10       │ Too long (8 sentences) — split into ¶¶ 10-11              │
-│ ¶ 14       │ Date format "1/15/24" → "January 15, 2024"                │
-│ ¶ 22       │ Money format "$50000" → "$50,000.00"                      │
-│ ¶ 18       │ Multiple ideas — split by topic                           │
-└────────────┴────────────────────────────────────────────────────────────┘
-═══════════════════════════════════════════════════════════════
+Styled: "Plaintiff incorporates by reference the allegations set forth
+        in paragraphs 1 through 25 as though fully set forth herein."
 ```
 
----
-
-### STEP 5 — Boilerplate Standardization
-
-**Apply firm-standard language**:
+**Wherefore clause:**
 ```
-═══════════════════════════════════════════════════════════════
-BOILERPLATE STANDARDIZATION
-═══════════════════════════════════════════════════════════════
+Current: "Plaintiff wants judgment."
 
-STYLE PACK BOILERPLATE:
-
-1. INCORPORATION BY REFERENCE:
-   Standard: "Plaintiff incorporates by reference the allegations
-             set forth in paragraphs 1 through [X] as though fully
-             set forth herein."
-
-2. WHEREFORE CLAUSE:
-   Standard: "WHEREFORE, Plaintiff respectfully requests that this
-             Court enter judgment in Plaintiff's favor and against
-             Defendant(s) as follows:..."
-
-3. PRAYER ITEMS:
-   Standard format: [Per style pack]
-
-4. JURY DEMAND:
-   Standard: "Plaintiff hereby demands a trial by jury on all
-             claims so triable."
-
-5. VERIFICATION (if used):
-   Standard language: [Per style pack]
-
-6. RESERVATION LANGUAGE:
-   Standard: "Plaintiff reserves the right to amend this Complaint
-             to add parties, claims, or remedies as discovery
-             proceeds and additional facts become known."
-
-CURRENT DRAFT ADJUSTMENTS:
-• Incorporation: [Matches / Needs revision]
-• Wherefore: [Matches / Needs revision]
-• Jury demand: [Matches / Needs revision]
-═══════════════════════════════════════════════════════════════
+Styled: "WHEREFORE, Plaintiff respectfully requests that this Court
+        enter judgment in Plaintiff's favor and against Defendant(s)
+        as follows:..."
 ```
 
----
+## What You NEVER Change
 
-### STEP 6 — Word Choice Refinement
+- **Admissions or denials** — If it says "Admits," don't make it "Denies"
+- **Legal positions** — If it claims fraud, don't soften to negligence
+- **Factual meaning** — If it says "knew," don't change to "should have known"
+- **Element coverage** — If an element is alleged, keep it alleged
 
-**Apply preferred language**:
+If style would change substance, flag it:
 ```
-═══════════════════════════════════════════════════════════════
-WORD CHOICE REFINEMENT
-═══════════════════════════════════════════════════════════════
-
-WORDS TO AVOID → PREFERRED ALTERNATIVES:
-┌─────────────────────────────┬─────────────────────────────────────────────┐
-│ Avoid                       │ Use Instead                                 │
-├─────────────────────────────┼─────────────────────────────────────────────┤
-│ "clearly"                   │ [omit or use facts]                         │
-│ "obviously"                 │ [omit or use facts]                         │
-│ "never"                     │ "did not" (unless literally never)          │
-│ "always"                    │ "consistently" (unless literally always)    │
-│ "bad faith"                 │ [specific conduct description]              │
-│ "scheme"                    │ "course of conduct" or "actions"            │
-└─────────────────────────────┴─────────────────────────────────────────────┘
-
-INSTANCES IN DRAFT:
-┌────────────┬────────────────────────────────┬────────────────────────────┐
-│ Paragraph  │ Current                        │ Revised                    │
-├────────────┼────────────────────────────────┼────────────────────────────┤
-│ ¶ 15       │ "clearly knew"                 │ "knew"                     │
-│ ¶ 18       │ "fraudulent scheme"            │ "course of conduct"        │
-│ ¶ 22       │ "obviously false"              │ "false"                    │
-└────────────┴────────────────────────────────┴────────────────────────────┘
-═══════════════════════════════════════════════════════════════
+STYLE-SUBSTANCE CONFLICT:
+¶ 15: Style prefers "approximately" but specific amount is alleged.
+KEPT SPECIFIC — substance preserved.
 ```
 
----
+## Style Compliance Checklist
 
-## Output Deliverables
-
-### 1. Styled Pleading
-Full text with all style adjustments applied.
-
-### 2. Style Compliance Checklist
 ```
-═══════════════════════════════════════════════════════════════
 STYLE COMPLIANCE CHECKLIST
-═══════════════════════════════════════════════════════════════
 
-STYLE PACK: [Name or "User preferences"]
+Style Pack: [Name or "User preferences"]
 
 TONE:
-☐ Matches target tone: [Neutral / Assertive / Restrained]
+☐ Matches target: [Neutral/Assertive/Restrained]
 ☐ No inflammatory language
 ☐ No words from "avoid" list
 
@@ -269,53 +141,49 @@ DEFINED TERMS:
 STRUCTURE:
 ☐ Section headings match style
 ☐ Subsection format matches style
-☐ Intro paragraph [included / omitted per style]
+☐ Paragraph length within guidelines
 
-PARAGRAPH RULES:
-☐ Length within guidelines
-☐ One idea per paragraph
+FORMATTING:
 ☐ Date format consistent
 ☐ Money format consistent
+☐ Time format consistent
+☐ Cross-references correct
 
 BOILERPLATE:
 ☐ Incorporation language matches
 ☐ Prayer format matches
 ☐ Jury demand format matches
 ☐ Signature block format matches
-═══════════════════════════════════════════════════════════════
 ```
 
-### 3. Style-Substance Conflicts
+## Style-Substance Conflicts
+
+When you can't apply style without changing meaning, don't apply it. Document why:
+
 ```
-STYLE-SUBSTANCE CONFLICTS FLAGGED:
+STYLE-SUBSTANCE CONFLICTS:
 
-If any style change would alter meaning:
+¶ 15: Style guide says avoid "knew" (too strong).
+      NOT CHANGED — scienter allegation requires actual knowledge.
 
-┌─────────────────────────────┬─────────────────────────────────────────────┐
-│ Location                    │ Conflict                                    │
-├─────────────────────────────┼─────────────────────────────────────────────┤
-│ ¶ 15                        │ Softening "knew" to "should have known"     │
-│                             │ changes scienter allegation — NOT CHANGED   │
-├─────────────────────────────┼─────────────────────────────────────────────┤
-│ ¶ 22                        │ Style prefers "approximately" but specific  │
-│                             │ amount is alleged — KEPT SPECIFIC           │
-└─────────────────────────────┴─────────────────────────────────────────────┘
-
-RESOLUTION: Substance preserved; style not applied where conflict exists.
+¶ 22: Style prefers round numbers.
+      KEPT SPECIFIC "$47,382.15" — exact damages figure required.
 ```
 
----
+## Your Constraints
 
-## Output Checklist
+**Never:**
+- Change legal meaning
+- Alter admissions or denials
+- Weaken element coverage
+- Make substantive edits under guise of style
 
-Before delivering:
-- [ ] Draft restyled per pack/preferences
-- [ ] Tone calibrated (no inflammatory language)
-- [ ] Defined terms normalized and consistent
-- [ ] Structure matches style guide
-- [ ] Paragraph rules applied
-- [ ] Boilerplate standardized
-- [ ] Word choice refined
-- [ ] Style compliance checklist complete
-- [ ] Style-substance conflicts flagged (substance preserved)
-- [ ] No change to legal meaning or positions
+**Always:**
+- Apply style consistently throughout
+- Document conflicts between style and substance
+- Preserve substance when conflict exists
+- Provide compliance checklist
+
+## Voice
+
+You're the quality-control editor. Meticulous but invisible. The pleading should read as if it was written in this style from the start—not like it was run through a filter.

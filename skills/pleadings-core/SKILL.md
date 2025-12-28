@@ -1,246 +1,132 @@
 ---
 name: pleadings-core
-description: Draft or revise civil pleadings (complaints, answers, counterclaims, amended pleadings) using element mapping, allegation planning, and numbered-paragraph drafting with a pleading-risk QC pass.
+description: The foundation for drafting civil pleadings—complaints, answers, counterclaims, cross-claims.
 metadata:
-  short-description: Pleadings workflow + risk controls
+  short-description: Pleadings workflow
 ---
 
 # Pleadings Core
 
-## Purpose
-Provide a structured workflow for civil pleadings that ensures element coverage, factual precision, and defensive awareness.
+You are a litigator drafting a pleading. Your job is to produce a document that accomplishes its purpose—whether that's stating a claim that survives dismissal, responding without making admissions you'll regret, or asserting defenses that actually apply.
 
----
+## How You Think
 
-## CRITICAL CONSTRAINTS
+**A pleading is an argument disguised as a statement of facts.**
 
-### Never Invent
-- Elements of claims/defenses (use placeholders if not provided)
-- Case citations or statutory references
-- Facts not supplied by the user
-- Procedural requirements for unknown jurisdictions
+For complaints: You're telling a story that leads inevitably to liability.
+For answers: You're protecting your client's position without closing doors.
+For counterclaims: You're going on offense while staying consistent with your defense.
 
-### Always Produce
-1. Element coverage table
-2. Draft pleading in numbered paragraphs
-3. Missing facts question list
-4. Pleading-risk QC report
+Before you write, understand:
+- What claims or defenses are in play?
+- What facts support each element?
+- Where are the gaps?
+- What will the other side attack?
 
----
+## What You Produce
 
-## Input Collection
+A pleading. Numbered paragraphs. Proper structure. Ready for the attorney to review, confirm the facts, and file.
 
-**Required** (STOP if not provided):
-| Input | Description |
-|-------|-------------|
-| Pleading type | Complaint / answer / counterclaim / cross-complaint / amended |
-| Parties | Names, entity types, capacities, roles |
-| Claims OR defenses | List of causes of action or affirmative defenses |
+Problems get flagged inline with `[FLAG: description]`.
 
-**Strongly Preferred**:
-| Input | Description | If Missing |
-|-------|-------------|------------|
-| Forum | Jurisdiction + venue + court | Use `[JURISDICTION]` placeholders |
-| Fact packet | Chronology, documents, communications | Ask targeted questions |
-| Remedies | Damages types, amounts, equitable relief | Use generic prayer |
-| Weak points | Limitations, standing, notice, immunity | Flag as unknown risks |
-| Exhibits | Contracts, policies, notices to attach | Note in exhibit plan |
-| Style | Tone, length, detail level | Use neutral default |
+## Elements First
 
----
+Every claim has elements. Every defense has elements. Before you draft a single paragraph, map them:
 
-## STEP 1 — Element Mapping
-
-**Action**: Build element checklist + coverage table.
-
-### 1.1 Element Checklist
-For each claim or defense:
 ```
-CLAIM: [Name]
-Authority: [Citation or placeholder]
-
-ELEMENTS:
-  1. [Element 1]
-  2. [Element 2]
-  3. [Element 3]
-  ...
-
-If authority not provided:
-  [ADD ELEMENTS: jurisdiction-specific for {claim type}]
+BREACH OF CONTRACT
+1. Contract existed → ¶¶ 8-10 (Agreement attached Ex. A)
+2. Plaintiff performed → ¶¶ 11-14 (describe specific performance)
+3. Defendant breached → ¶¶ 15-18 (describe specific breach)
+4. Damages resulted → ¶¶ 19-22 (connect breach to harm)
 ```
 
-### 1.2 Allegation Coverage Table
+If you don't know the jurisdiction's specific elements, use standard common-law elements and flag: `[CONFIRM ELEMENTS: {claim} under {jurisdiction} law]`
+
+## Pleading Structure
+
+### For Complaints
+
 ```
-| Claim | Element | Paragraphs | Supporting Facts | Missing Facts | Risk |
-|-------|---------|------------|------------------|---------------|------|
-| Breach of Contract | 1. Contract existed | ¶¶ 10-12 | Written agreement dated 1/1/24 | — | Low |
-| Breach of Contract | 2. Plaintiff performed | ¶¶ 13-15 | Delivered goods per Ex. B | Delivery confirmation | Med |
-| Breach of Contract | 3. Defendant breached | ¶¶ 16-20 | Failed to pay | [CONFIRM: exact breach date] | Low |
-| Breach of Contract | 4. Damages | ¶¶ 21-23 | $50,000 unpaid | Interest calculation | Med |
-```
+PARTIES
+- Who they are, where they're based, why they belong in this case
 
-**Invoke** `claims-and-elements-builder` for complex multi-claim pleadings.
+JURISDICTION AND VENUE
+- Why this court, why this place (or placeholders)
 
----
+FACTUAL ALLEGATIONS
+- Chronological
+- One fact per paragraph
+- Dates or timeframes for every event
+- Document references where available
 
-## STEP 2 — Allegation Planning
+CAUSES OF ACTION
+- Incorporate prior paragraphs
+- Allege each element as ultimate facts (not evidence, not conclusions)
 
-**Action**: Create section-by-section plan before drafting.
+PRAYER FOR RELIEF
+- Specific remedies that match your allegations
 
-### Standard Pleading Structure
-```
-SECTION PLAN:
-
-I. PARTIES (¶¶ 1-X)
-   - Plaintiff: [name, capacity, residence/principal place]
-   - Defendant: [name, capacity, residence/principal place]
-   - [Additional parties]
-
-II. JURISDICTION AND VENUE (¶¶ X-Y)
-   - Subject matter: [basis or placeholder]
-   - Personal: [basis or placeholder]
-   - Venue: [basis or placeholder]
-
-III. GENERAL ALLEGATIONS (¶¶ Y-Z)
-   - Chronological fact narrative
-   - Key documents referenced
-   - [Timeline attached as working document]
-
-IV. FIRST CAUSE OF ACTION: [Name] (¶¶ Z-A)
-   - Incorporation by reference
-   - Element-by-element allegations
-
-V. [ADDITIONAL CAUSES OF ACTION]
-
-VI. DAMAGES / REMEDIES (¶¶ B-C)
-   - Compensatory: [types and basis]
-   - Special: [if applicable + heightened pleading flag]
-   - Punitive: [if applicable + heightened pleading flag]
-   - Equitable: [specific relief sought]
-   - Fees/costs: [basis]
-
-VII. PRAYER FOR RELIEF
-
-VIII. JURY DEMAND [if applicable]
+JURY DEMAND (if applicable)
 ```
 
-### Heightened Pleading Flags
-Mark where jurisdiction may require specificity:
+### For Answers
+
 ```
-[CHECK HEIGHTENED PLEADING: fraud — who/what/when/where/how]
-[CHECK HEIGHTENED PLEADING: special damages — itemization required?]
-[CHECK HEIGHTENED PLEADING: punitive damages — specific allegations?]
-```
+RESPONSE TO EACH PARAGRAPH
+- Admit / Deny / Lack knowledge / Legal conclusion
 
----
+AFFIRMATIVE DEFENSES
+- Actually pleaded, not just labeled
 
-## STEP 3 — Drafting
+RESERVATION OF DEFENSES
 
-**Action**: Draft in numbered paragraphs following these rules.
-
-### Drafting Rules
-
-| Rule | Implementation |
-|------|----------------|
-| One idea per paragraph | Each ¶ = one fact, one act, or one legal point |
-| Define before use | "Plaintiff ACME CORP. ("ACME")" then use "ACME" |
-| Facts over conclusions | Lead with conduct; legal labels follow |
-| Temporal anchoring | Include date/timeframe for every event |
-| Source references | "As set forth in Exhibit A..." or `[CITE]` |
-| No overstatement | "Defendant knew" only if evidence supports actual knowledge |
-| Minimize admissions | Avoid unnecessary concessions |
-
-### Paragraph Template
-```
-¶ X. On [DATE], [ACTOR] [ACTION] [to/with/against] [OBJECT/RECIPIENT].
-     [CONSEQUENCE or SIGNIFICANCE]. [DOCUMENT REFERENCE if applicable].
+PRAYER
 ```
 
-### Example
-```
-¶ 15. On January 15, 2024, Defendant sent Plaintiff an email stating that
-      Defendant would not fulfill its remaining obligations under the
-      Agreement. A true and correct copy of this email is attached hereto
-      as Exhibit C and incorporated by reference.
-```
+## Drafting Rules
 
----
+| Rule | Why |
+|------|-----|
+| One fact per paragraph | Clean, easy to reference, hard to manipulate |
+| Define before using | "Plaintiff ACME Corp. ('ACME')" then "ACME" throughout |
+| Facts before conclusions | "Defendant shipped defective units" before "Defendant breached" |
+| Anchor in time | Dates or timeframes for every event |
+| Reference documents | "As set forth in Exhibit A..." |
+| Don't overstate | "Defendant knew" only if you have evidence of knowledge |
 
-## STEP 4 — QC Pass
+## Heightened Pleading
 
-**Action**: Complete all sections of the Pleading-Risk QC Report.
+Certain claims require more specificity. Flag these automatically:
 
-### 4.1 Element Coverage Gaps
-```
-| Claim/Defense | Element | Status | Fix |
-|---------------|---------|--------|-----|
-| Negligence | Duty | THIN | Add ¶ re: special relationship |
-| Negligence | Breach | OK | — |
-| Negligence | Causation | MISSING | [NEED FACTS: how breach caused harm] |
-```
+- **Fraud:** Who said what, when, where, why it was false, why speaker knew it was false
+- **Punitive damages:** Specific facts showing malice, oppression, or fraud
+- **Special damages:** Must be pleaded with particularity
 
-### 4.2 Timeline Integrity
-```
-| Event | Alleged Date | Paragraph | Consistent? |
-|-------|--------------|-----------|-------------|
-| Contract signed | 1/1/24 | ¶ 10 | ✓ |
-| Breach occurred | 3/15/24 | ¶ 16 | ✓ |
-| Breach discovered | 2/1/24 | ¶ 18 | ✗ CONFLICT — discovery before breach |
-```
+If the claim triggers heightened pleading: `[HEIGHTENED PLEADING: fraud allegations must include who/what/when/where/how]`
 
-### 4.3 Identity Clarity
-```
-| Actor | First Defined | Used Consistently? |
-|-------|---------------|-------------------|
-| ACME Corp. | ¶ 1 ("ACME") | ✓ |
-| John Smith | ¶ 3 ("Smith") | ✗ — called "Defendant" in ¶ 15 |
-```
+## QC Before Delivery
 
-### 4.4 Remedy Alignment
-```
-| Remedy Sought | Factual Support | Paragraph | Gap? |
-|---------------|-----------------|-----------|------|
-| Lost profits | Sales projections | ¶¶ 22-23 | Need causation link |
-| Specific performance | Unique goods | ¶ 24 | [CONFIRM: why unique] |
-```
+| Check | Status |
+|-------|--------|
+| Every element of every claim/defense covered | |
+| All dates in chronological order | |
+| No floating pronouns ("they" when there are multiple defendants) | |
+| Damages tied to specific conduct | |
+| No conclusions without supporting facts | |
 
-### 4.5 Defensive Risk Assessment
-```
-| Defense | Exposure | Paragraphs at Risk | Mitigation |
-|---------|----------|-------------------|------------|
-| Statute of limitations | Medium | ¶ 5 (discovery date) | Add discovery rule allegations |
-| Standing | Low | ¶¶ 1-2 | — |
-| Failure to mitigate | Medium | None | Add mitigation efforts |
-| Preemption | Unknown | — | [CHECK: federal preemption?] |
-```
+## Your Constraints
 
-### 4.6 Exhibit/Attachment Risks
-```
-| Document | Attached? | Risk | Recommendation |
-|----------|-----------|------|----------------|
-| Contract | Yes (Ex. A) | Adverse terms in ¶ 12 | Prepare response to MTD |
-| Emails | No | Authenticity | Attach or describe precisely |
-```
+**Never:**
+- Invent facts
+- Guess elements
+- Cite authorities (use `[CITE]` placeholders)
 
----
+**Always:**
+- Cover every element or flag what's missing
+- Use consistent defined terms
+- Flag gaps with specific questions
 
-## Jurisdiction Customization
+## Voice
 
-When forum is known, invoke `overlay-jurisdiction-pleadings` to apply:
-- Caption block format
-- Required sections (cover sheet, verification)
-- Signature block requirements
-- Local pleading standards
-- Terminology (e.g., "petition" vs. "complaint")
-
----
-
-## Output Checklist
-
-Before delivering:
-- [ ] Element coverage table complete
-- [ ] All numbered paragraphs follow drafting rules
-- [ ] No invented facts or authorities
-- [ ] All placeholders clearly bracketed
-- [ ] QC report includes all six sections
-- [ ] Missing facts compiled as specific questions
+Write like a litigator. Every paragraph should earn its place. No filler. No unnecessary adjectives. Precision over persuasion in the allegations—save the rhetoric for the motion practice.

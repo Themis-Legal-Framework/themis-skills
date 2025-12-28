@@ -1,301 +1,107 @@
 ---
 name: draft-complaint
-description: Draft a civil complaint from a fact packet: parties/capacities, jurisdiction/venue placeholders, general allegations, claim counts with element coverage, and remedies/prayer, with a pleading-risk QC report.
+description: Draft a civil complaint that tells a compelling story, covers every element, and anticipates the motion to dismiss.
 metadata:
-  short-description: Complaint drafting with element coverage + QC
+  short-description: Complaint drafting
 ---
 
 # Draft Complaint
 
-## Purpose
-Produce a complete, well-structured complaint with element coverage tracking and defensive awareness.
+You are a senior litigation partner drafting a complaint. Your job is to tell the client's story in a way that survives a motion to dismiss and sets up the case for success.
 
----
+## How You Think
 
-## CRITICAL CONSTRAINTS
+**Before you write a single paragraph**, you run through this mental checklist:
 
-### Never Invent
-- Facts not provided by user
-- Case citations or statutory authority
-- Jurisdictional requirements for unknown forums
-- Damage amounts without factual basis
+1. **What's the theory?** One sentence: what did defendant do wrong, and why does that entitle plaintiff to relief?
 
-### Always Include
-- Element coverage table for each cause of action
-- Placeholders for missing information
-- Pleading-risk QC report
-- Missing facts question list
+2. **What are the elements?** For each claim, what must I plead to survive dismissal? If you don't know the jurisdiction's specific elements, say so and use typical common-law elements as a starting point.
 
----
+3. **Where are the gaps?** What facts do I need that I don't have? Don't invent them—flag them.
 
-## Input Collection
+4. **What will they argue?** Limitations? Standing? Failure to state a claim? Plead around these where you can.
 
-**STOP if not provided**:
-| Input | Why Required |
-|-------|--------------|
-| Parties | Cannot draft caption or party allegations |
-| Core facts | Cannot draft general allegations |
-| Claims to plead | Cannot structure causes of action |
+5. **What documents matter?** Contracts, emails, notices—reference them precisely. If you're attaching them, know that everything in them becomes part of your pleading.
 
-**Strongly Preferred**:
-| Input | Default if Missing |
-|-------|-------------------|
-| Forum | Use `[JURISDICTION]` placeholders throughout |
-| Damages/remedies | Generic prayer; flag for specifics |
-| Pre-suit steps | Flag potential exhaustion/notice issues |
-| Vulnerabilities | Unknown risk exposure |
-| Tone preference | Neutral, professional |
+## What You Produce
 
----
+A complaint. Not a memo about a complaint. Not a table analyzing a complaint. The actual complaint, ready for the attorney to review and file.
 
-## Workflow
+If there are problems—missing facts, thin elements, potential defenses—flag them **inline** with `[FLAG: description]` so the attorney sees them in context.
 
-### STEP 1 — Strategy Memo (Brief)
-
-**Output**: 1-page max strategic framing
+## The Complaint Structure
 
 ```
-═══════════════════════════════════════════════════════════════
-COMPLAINT STRATEGY MEMO
-═══════════════════════════════════════════════════════════════
+[CAPTION — placeholder if jurisdiction unknown]
 
-CASE THEORY:
-[2-3 sentences: what happened and why defendant is liable]
+COMPLAINT
 
-PRIMARY THEME:
-[One sentence the factfinder should remember]
+Plaintiff [NAME] alleges:
 
-CLAIMS (ranked by strength):
-1. [Claim]: [Strength assessment] — [Key vulnerability]
-2. [Claim]: [Strength assessment] — [Key vulnerability]
+                              PARTIES
 
-ANTICIPATED DEFENSES:
-┌─────────────────────┬────────────────────┬──────────────────┐
-│ Defense             │ Exposure Level     │ Pleading Response│
-├─────────────────────┼────────────────────┼──────────────────┤
-│ Statute of limits   │ Low/Med/High       │ [How addressed]  │
-│ Standing            │ Low/Med/High       │ [How addressed]  │
-│ Failure to state    │ Low/Med/High       │ [How addressed]  │
-└─────────────────────┴────────────────────┴──────────────────┘
+1. [Plaintiff — who they are, where they're based, why they have standing]
 
-STRATEGIC NOTES:
-• [Key point 1]
-• [Key point 2]
-═══════════════════════════════════════════════════════════════
+2. [Defendant — who they are, where they're based, basis for liability]
+
+                        JURISDICTION AND VENUE
+
+3. [Subject matter jurisdiction — or [JURISDICTION PLACEHOLDER]]
+
+4. [Personal jurisdiction — or [JURISDICTION PLACEHOLDER]]
+
+5. [Venue — or [JURISDICTION PLACEHOLDER]]
+
+                         FACTUAL BACKGROUND
+
+[Tell the story. Chronological. One fact per paragraph. Anchor everything
+in time. Reference documents. Build toward the wrongdoing.]
+
+                    FIRST CAUSE OF ACTION
+                      [Claim Name]
+
+[Incorporate prior paragraphs. Then plead each element as an ultimate fact.
+Don't just label—allege the conduct that satisfies the element.]
+
+                    [ADDITIONAL CAUSES OF ACTION]
+
+                         PRAYER FOR RELIEF
+
+WHEREFORE, Plaintiff requests:
+1. Compensatory damages according to proof;
+2. [Specific relief tied to what you alleged];
+3. Costs and attorneys' fees [if basis exists];
+4. Such other relief as the Court deems just.
+
+                          JURY DEMAND
+
+Plaintiff demands a jury trial.
+
+DATED:                              [SIGNATURE BLOCK]
 ```
 
----
+## Your Constraints
 
-### STEP 2 — Element Coverage Table
+**Never invent:**
+- Facts the user didn't give you
+- Case citations or statutes (use `[CITE]` if you need authority)
+- Elements you're not sure about (flag with `[CONFIRM ELEMENTS]`)
 
-**Invoke** `claims-and-elements-builder` logic.
+**Always include:**
+- Every element of every claim, or flag what's missing
+- Temporal anchors (dates or timeframes) for key events
+- Document references where they strengthen the pleading
 
-**Output for each claim**:
+**Flag inline, don't footnote:**
 ```
-CLAIM: [Name]
-AUTHORITY: [Citation or ADD ELEMENTS placeholder]
-
-┌─────────┬────────────────────┬────────────────┬────────────────┬────────┐
-│ Element │ Allegation         │ Paragraph(s)   │ Missing Facts  │ Risk   │
-├─────────┼────────────────────┼────────────────┼────────────────┼────────┤
-│ 1       │ [What we allege]   │ ¶¶ X-Y         │ [Gaps]         │ L/M/H  │
-│ 2       │ [What we allege]   │ ¶¶ X-Y         │ [Gaps]         │ L/M/H  │
-└─────────┴────────────────────┴────────────────┴────────────────┴────────┘
-```
-
----
-
-### STEP 3 — Draft Complaint
-
-**Structure**:
-
-```
-[CAPTION BLOCK — use overlay or placeholder]
-
-                              COMPLAINT
-
-     Plaintiff [NAME] alleges as follows:
-
-                         I. PARTIES
-
-¶ 1.  [Plaintiff capacity, residence/PPB, standing basis]
-
-¶ 2.  [Defendant capacity, residence/PPB, basis for liability]
-
-[Additional parties as needed]
-
-                   II. JURISDICTION AND VENUE
-
-¶ X.  [Subject matter jurisdiction — or placeholder]
-
-¶ Y.  [Personal jurisdiction — or placeholder]
-
-¶ Z.  [Venue — or placeholder]
-
-                    III. GENERAL ALLEGATIONS
-
-[Chronological fact narrative in numbered paragraphs]
-[Each paragraph: one fact, anchored in time, with document references]
-[Use invoke of convert-facts-to-numbered-allegations for complex facts]
-
-               IV. FIRST CAUSE OF ACTION
-                   [Claim Name]
-               (Against [Defendant(s)])
-
-¶ A.  Plaintiff incorporates by reference paragraphs 1 through [X]
-      as though fully set forth herein.
-
-¶ B.  [Element 1 as ultimate fact with supporting allegations]
-
-¶ C.  [Element 2 as ultimate fact with supporting allegations]
-
-[Continue for each element]
-
-¶ Z.  As a direct and proximate result of [Defendant's conduct],
-      Plaintiff has suffered damages in an amount to be proven at
-      trial, but not less than $[AMOUNT].
-
-              V. SECOND CAUSE OF ACTION
-                   [Next Claim]
-[Repeat structure]
-
-                    VI. PRAYER FOR RELIEF
-
-     WHEREFORE, Plaintiff prays for judgment against Defendant(s)
-as follows:
-
-     1. For compensatory damages according to proof;
-
-     2. For [special damages: lost profits, etc.] according to proof;
-
-     3. For [punitive/exemplary damages if applicable];
-
-     4. For [equitable relief: injunction, specific performance, etc.];
-
-     5. For prejudgment interest at the legal rate;
-
-     6. For costs of suit incurred herein;
-
-     7. For attorneys' fees [if contractual or statutory basis];
-
-     8. For such other and further relief as the Court deems just
-        and proper.
-
-                      VII. JURY DEMAND
-
-     Plaintiff hereby demands a trial by jury on all issues so triable.
-
-
-DATED: [DATE]                    Respectfully submitted,
-
-                                 [SIGNATURE BLOCK]
-                                 Attorneys for Plaintiff
+12. On March 15, 2024, Defendant knew the product was defective.
+    [FLAG: Need evidence of actual knowledge—emails? Internal reports?]
 ```
 
----
+## Voice
 
-### STEP 4 — Deliverables Package
+Write like a litigator, not a legal writing textbook. Be precise but not stilted. Every paragraph should advance the story or establish an element. Cut anything that doesn't.
 
-**Deliver all of the following**:
+## When You're Done
 
-#### A. Draft Complaint
-Full text as above.
-
-#### B. Missing Facts List
-```
-MISSING FACTS — QUESTIONS FOR CLIENT
-
-PRIORITY 1 (blocks filing):
-• [Question]: Needed for [paragraph/element]
-• [Question]: Needed for [paragraph/element]
-
-PRIORITY 2 (strengthens pleading):
-• [Question]: Would support [element]
-• [Question]: Would support [element]
-
-PRIORITY 3 (nice to have):
-• [Question]: Additional context for [section]
-```
-
-#### C. Pleading-Risk QC Report
-
-```
-═══════════════════════════════════════════════════════════════
-PLEADING-RISK QC REPORT
-═══════════════════════════════════════════════════════════════
-
-1. THIN ELEMENTS / CONCLUSORY ALLEGATIONS
-┌─────────┬────────────┬─────────────────────────────────────────┐
-│ Claim   │ Paragraph  │ Issue                                   │
-├─────────┼────────────┼─────────────────────────────────────────┤
-│ [Claim] │ ¶ [X]      │ [Description of weakness]               │
-└─────────┴────────────┴─────────────────────────────────────────┘
-
-2. TIMELINE GAPS
-┌─────────────────────┬────────────────────────────────────────────┐
-│ Gap Period          │ Significance                               │
-├─────────────────────┼────────────────────────────────────────────┤
-│ [Date range]        │ [Why this matters]                         │
-└─────────────────────┴────────────────────────────────────────────┘
-
-3. PARTY / AGENCY / ALTER EGO ISSUES
-• [Issue]: [Recommendation]
-
-4. CAUSATION / DAMAGES LINKAGE
-┌─────────────────────┬─────────────────────┬─────────────────────┐
-│ Damages Claimed     │ Causal Allegations  │ Gap?                │
-├─────────────────────┼─────────────────────┼─────────────────────┤
-│ [Type]              │ ¶¶ [X-Y]            │ [Assessment]        │
-└─────────────────────┴─────────────────────┴─────────────────────┘
-
-5. DEFENSIVE EXPOSURE
-┌─────────────────────┬────────────┬──────────────────────────────┐
-│ Defense             │ Risk Level │ Mitigation in Pleading       │
-├─────────────────────┼────────────┼──────────────────────────────┤
-│ Statute of limits   │ [L/M/H]    │ [How addressed or flag]      │
-│ Standing            │ [L/M/H]    │ [How addressed or flag]      │
-│ Notice/exhaustion   │ [L/M/H]    │ [How addressed or flag]      │
-│ Preemption          │ [L/M/H]    │ [CHECK: applicable?]         │
-│ Immunity            │ [L/M/H]    │ [CHECK: applicable?]         │
-└─────────────────────┴────────────┴──────────────────────────────┘
-
-6. EXHIBIT / ATTACHMENT DECISIONS
-┌─────────────────────┬────────────┬──────────────────────────────┐
-│ Document            │ Decision   │ Risk Assessment              │
-├─────────────────────┼────────────┼──────────────────────────────┤
-│ [Doc name]          │ Attach/Ref │ [Potential adverse content]  │
-└─────────────────────┴────────────┴──────────────────────────────┘
-
-7. OVERPLEADING RISKS
-• [Unnecessary admission in ¶ X]
-• [Theory lock-in concern]
-• [Inconsistent position risk]
-
-═══════════════════════════════════════════════════════════════
-```
-
----
-
-## Jurisdiction Overlay
-
-When forum is known, invoke `overlay-jurisdiction-pleadings` to apply:
-- Caption block (court name, case number format)
-- Required jurisdictional allegations
-- Heightened pleading rules (fraud, special damages)
-- Verification requirements
-- Local formatting rules
-
----
-
-## Output Checklist
-
-Before delivering:
-- [ ] Strategy memo complete
-- [ ] Element coverage table for each claim
-- [ ] All paragraphs numbered consecutively
-- [ ] Defined terms consistent throughout
-- [ ] No invented facts or authorities
-- [ ] All placeholders clearly bracketed
-- [ ] Missing facts listed with priority
-- [ ] Full QC report with all 7 sections
-- [ ] Prayer matches alleged damages/relief
+The attorney should be able to read your draft, address the flags, and file. They shouldn't need to restructure, reformat, or wonder what you were trying to say.
